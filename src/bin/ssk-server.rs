@@ -20,8 +20,12 @@ struct ServerConfig {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+  // 获取命令行参数
+  let args: Vec<String> = std::env::args().collect();
+  let config_path = args.get(1).map(|s| s.as_str()).unwrap_or("config.toml");
+
   // 读取配置文件
-  let config_content = fs::read_to_string("config.toml")?;
+  let config_content = fs::read_to_string(config_path)?;
   let config: Config = toml::from_str(&config_content)?;
 
   let addr = &config.server.address;
