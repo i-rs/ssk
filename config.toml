@@ -1,0 +1,6 @@
+# 服务器配置
+[server]
+# 监听地址
+address = "0.0.0.0:8888"
+# 上传文件保存目录
+upload_dir = "uploads"
